@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kafka-consumer
+  name: kafka-consumer-comments
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: kafka-consumer
+      app: kafka-consumer-comments
   template:
     metadata:
       labels:
-        app: kafka-consumer
+        app: kafka-consumer-comments
     spec:
       containers:
-      - image: docker.io/btoarriola/kafka-consumer:{github.sha}
-        name: kafka-consumer
+      - image: docker.io/xmnvasquez/kafka-consumer-comments:{github.sha}
+        name: kafka-consumer-comments
 #        envFrom:
 #        - configMapRef:
 #            name: adsoftsito-config
@@ -29,13 +29,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: kafka-consumer
+  name: kafka-consumer-comments
   annotations:
     dev.okteto.com/auto-ingress: "true"
 spec:
   type: ClusterIP  
   ports:
-  - name: "kafka-consumer"
+  - name: "kafka-consumer-comments"
     port: 8081
   selector:
-    app: kafka-consumer
+    app: kafka-consumer-comments

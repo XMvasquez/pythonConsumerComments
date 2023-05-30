@@ -40,7 +40,7 @@ for msg in consumer:
     userid = record['userid']
     objectid = record['objectid']
     message = record['message']
-    print("hola :)")
+    print("hola :D")
 
 
     # Create dictionary and ingest data into MongoDB
@@ -50,7 +50,6 @@ for msg in consumer:
         tkdapp_id = db.tkdapp_comments.insert_one(tkdapp_rec)
         print("Data inserted with record ids", tkdapp_id)
 
-        subprocess.call(['sh', './test.sh'])
     except Exception as e:
         print("Could not insert into MongoDB")
         print(e)
